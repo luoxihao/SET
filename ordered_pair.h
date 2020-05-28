@@ -6,27 +6,47 @@ using namespace std;
 enum types { INT, CHAR, STRING, DOUBLE, ORD, NUll };
 class ord {
   private:
-    int *I[2];
-    char *CH[2];
-    string *STR[2];
-    double *DOU[2];
+    int *I[2] = {nullptr, nullptr};
+    char *CH[2] = {nullptr, nullptr};
+    string *STR[2] = {nullptr, nullptr};
+    double *DOU[2] = {nullptr, nullptr};
     types type1, type2;
 
   public:
-    // bool operator<(const ord &b) const;
     ord() {
         type1 = NUll;
         type2 = NUll;
     };
     friend ostream &operator<<(ostream &os, const ord &op);
     template <typename T1, typename T2> ord(T1 t1, T2 t2);
-    ~ord(){}; //��������
+    ~ord(){}; //析构函数
 
-    size_t OPHash() const; //��ż�����������������ڲ�ͬ��ż�����ıȽ�
-    bool operator<(const ord &op) const {
-        return (OPHash() < op.OPHash());
-    }; //���ط���<
+    size_t OPHash() const; //入set前的排序重载
+    // bool operator<(const ord &op) const {
+    //     if (OPHash() == op.OPHash())
+    //         return (OPHash() > op.OPHash());
+    //     return (OPHash() < op.OPHash());
+    // };
+    bool operator<(const ord &o) const;
 };
+bool ord::operator<(const ord &o) const { //新的入set的重载
+
+    return I[0] < o.I[0]
+               ? true
+               : (DOU[0] < DOU[0]
+                      ? true
+                      : (CH[0] < o.CH[0]
+                             ? true
+                             : (STR[0] < o.STR[0]
+                                    ? true
+                                    : I[01] < o.I[1]
+                                          ? true
+                                          : DOU[1] < o.DOU[1]
+                                                ? true
+                                                : CH[1] < o.CH[1]
+                                                      ? true
+                                                      : STR[1] < STR[1])));
+}
 ostream &operator<<(ostream &os, const ord &op) {
     os << "<";
     switch (op.type1) {
@@ -59,13 +79,6 @@ ostream &operator<<(ostream &os, const ord &op) {
     os << ">";
     return os;
 }
-
-// bool ord::operator<(const ord &b) const {
-//     if (type1 == b.type1) {
-//         return type2 < b.type2;
-//     } else
-//         return type1 < b.type1;
-// }
 
 template <typename T1, typename T2> ord::ord(T1 t1, T2 t2) {
     const type_info &IInfo = typeid(int);
@@ -117,7 +130,7 @@ template <typename T1, typename T2> ord::ord(T1 t1, T2 t2) {
     }
 }
 
-size_t ord::OPHash() const {
+size_t ord::OPHash() const { //旧入set的<重载
     size_t s = type1 * 10000 + type2 * 100000;
     switch (type1) {
     case INT:
