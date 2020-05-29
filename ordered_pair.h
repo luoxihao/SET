@@ -17,6 +17,38 @@ class ord {
         type1 = NUll;
         type2 = NUll;
     };
+    void first_print() {
+        switch (type1) {
+        case INT:
+            cout << I[0] << " ";
+            break;
+        case CHAR:
+            cout << CH[0] << " ";
+            break;
+        case DOUBLE:
+            cout << DOU[0] << " ";
+            break;
+        case STRING:
+            cout << STR[0] << " ";
+            break;
+        }
+    }
+    void second_print() {
+        switch (type2) {
+        case INT:
+            cout << I[1] << " ";
+            break;
+        case CHAR:
+            cout << CH[1] << " ";
+            break;
+        case DOUBLE:
+            cout << DOU[1] << " ";
+            break;
+        case STRING:
+            cout << STR[1] << " ";
+            break;
+        }
+    }
     friend ostream &operator<<(ostream &os, const ord &op);
     template <typename T1, typename T2> ord(T1 t1, T2 t2);
     ~ord(){}; //析构函数

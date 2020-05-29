@@ -89,15 +89,419 @@ class SET {
     friend istream &operator>>(istream &Cin, SET &S);
     friend ostream &operator<<(ostream &Cout, const SET &S);
     void Cartesian_Product(const SET &SETA, const SET &SETB); //笛卡尔积
-    void Cartesian_Product_print(const SET &SETA,
-                                 const SET &SETB);  //笛卡尔积输出
-    void Global_relationship_Print();               //集合的全域关系
-    void Identity_relationship_Print(); //集合的恒等关系
-    void Empty_Relationship_Print();                //空关系
+    void Cartesian_Product_print(const SET &SETB); //笛卡尔积输出
+    void Global_relationship_Print();              //集合的全域关系
+    void Identity_relationship_Print();            //集合的恒等关系
+    void Empty_Relationship_Print();               //空关系
+    void Less_or_equal_relationship_print();       //少于或等于
+    void Divisive_relationship_print();            //整除
 };
+void SET::Divisive_relationship_print() { //整除
+    SET temp;
+    switch (Mytype) {
+    case INT:
+        for (auto itA = Int.begin(); itA != Int.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itB % *itA == 0)
+                        temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itB % *itA == 0)
+                        temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    case CHAR:
+        for (auto itA = Char.begin(); itA != Char.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itB % *itA == 0)
+
+                        temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itB % *itA == 0)
+
+                        temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+
+                    temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    case DOUBLE:
+
+        for (auto itA = Double.begin(); itA != Double.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+
+                    temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+
+                    temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+
+                    temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    case STRING:
+        for (auto itA = Str.begin(); itA != Str.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    case ORD:
+        for (auto itA = Ord.begin(); itA != Ord.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    }
+    cout << temp << endl;
+    return;
+}
+void SET::Less_or_equal_relationship_print() { //少于或等于的关系
+    SET temp;
+    switch (Mytype) {
+    case INT:
+        for (auto itA = Int.begin(); itA != Int.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itA <= *itB)
+                        temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itA <= *itB)
+                        temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itA <= *itB)
+                        temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    case CHAR:
+        for (auto itA = Char.begin(); itA != Char.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itA <= *itB)
+
+                        temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itA <= *itB)
+
+                        temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itA <= *itB)
+
+                        temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    case DOUBLE:
+        for (auto itA = Double.begin(); itA != Double.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itA <= *itB)
+
+                        temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itA <= *itB)
+
+                        temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    if (*itA <= *itB)
+
+                        temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    case STRING:
+        for (auto itA = Str.begin(); itA != Str.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    case ORD:
+        for (auto itA = Ord.begin(); itA != Ord.end(); itA++) {
+            switch (Mytype) {
+            case INT:
+                for (auto itB = Int.begin(); itB != Int.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case CHAR:
+                for (auto itB = Char.begin(); itB != Char.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case DOUBLE:
+                for (auto itB = Double.begin(); itB != Double.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case STRING:
+                for (auto itB = Str.begin(); itB != Str.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            case ORD:
+                for (auto itB = Ord.begin(); itB != Ord.end(); itB++) {
+                    ord Tord(*itA, *itB);
+                    temp.push(Tord);
+                }
+                break;
+            }
+        }
+        break;
+    }
+    cout << temp << endl;
+    return;
+}
 void SET::Empty_Relationship_Print() { cout << "{}" << endl; }
 
-void SET::Identity_relationship_Print() {//恒等
+void SET::Identity_relationship_Print() { //恒等
     SET temp;
     switch (Mytype) {
     case INT: {
@@ -133,10 +537,9 @@ void SET::Identity_relationship_Print() {//恒等
     }
     cout << temp << endl;
 }
-void SET::Global_relationship_Print() {
-    SET T_SET;
+void SET::Global_relationship_Print() { //全域
     SET T = *this;
-    T_SET.Cartesian_Product_print(T, T);
+    T.Cartesian_Product_print(T);
 }
 
 //-----------------------------------------------------------------------------------------------------------
@@ -353,216 +756,217 @@ void SET::Cartesian_Product(const SET &SETA, const SET &SETB) {
     return;
 }
 
-void SET::Cartesian_Product_print(const SET &SETA, const SET &SETB) { // AXB
-    Ord.clear(); //保险 防止出现不可预知的错误
-    switch (SETA.Mytype) {
+void SET::Cartesian_Product_print(const SET &SETB) { // AXB
+    // Ord.clear(); //保险 防止出现不可预知的错误
+    SET temp;
+    switch (Mytype) {
     case INT:
-        for (auto itA = SETA.Int.begin(); itA != SETA.Int.end(); itA++) {
+        for (auto itA = Int.begin(); itA != Int.end(); itA++) {
             switch (SETB.Mytype) {
             case INT:
                 for (auto itB = SETB.Int.begin(); itB != SETB.Int.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case CHAR:
                 for (auto itB = SETB.Char.begin(); itB != SETB.Char.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case DOUBLE:
                 for (auto itB = SETB.Double.begin(); itB != SETB.Double.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case STRING:
                 for (auto itB = SETB.Str.begin(); itB != SETB.Str.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case ORD:
                 for (auto itB = SETB.Ord.begin(); itB != SETB.Ord.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             }
         }
         break;
     case CHAR:
-        for (auto itA = SETA.Char.begin(); itA != SETA.Char.end(); itA++) {
+        for (auto itA = Char.begin(); itA != Char.end(); itA++) {
             switch (SETB.Mytype) {
             case INT:
                 for (auto itB = SETB.Int.begin(); itB != SETB.Int.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case CHAR:
                 for (auto itB = SETB.Char.begin(); itB != SETB.Char.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case DOUBLE:
                 for (auto itB = SETB.Double.begin(); itB != SETB.Double.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case STRING:
                 for (auto itB = SETB.Str.begin(); itB != SETB.Str.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case ORD:
                 for (auto itB = SETB.Ord.begin(); itB != SETB.Ord.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             }
         }
         break;
     case DOUBLE:
-        for (auto itA = SETA.Double.begin(); itA != SETA.Double.end(); itA++) {
+        for (auto itA = Double.begin(); itA != Double.end(); itA++) {
             switch (SETB.Mytype) {
             case INT:
                 for (auto itB = SETB.Int.begin(); itB != SETB.Int.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case CHAR:
                 for (auto itB = SETB.Char.begin(); itB != SETB.Char.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case DOUBLE:
                 for (auto itB = SETB.Double.begin(); itB != SETB.Double.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case STRING:
                 for (auto itB = SETB.Str.begin(); itB != SETB.Str.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case ORD:
                 for (auto itB = SETB.Ord.begin(); itB != SETB.Ord.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             }
         }
         break;
     case STRING:
-        for (auto itA = SETA.Str.begin(); itA != SETA.Str.end(); itA++) {
+        for (auto itA = Str.begin(); itA != Str.end(); itA++) {
             switch (SETB.Mytype) {
             case INT:
                 for (auto itB = SETB.Int.begin(); itB != SETB.Int.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case CHAR:
                 for (auto itB = SETB.Char.begin(); itB != SETB.Char.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case DOUBLE:
                 for (auto itB = SETB.Double.begin(); itB != SETB.Double.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case STRING:
                 for (auto itB = SETB.Str.begin(); itB != SETB.Str.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case ORD:
                 for (auto itB = SETB.Ord.begin(); itB != SETB.Ord.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             }
         }
         break;
     case ORD:
-        for (auto itA = SETA.Ord.begin(); itA != SETA.Ord.end(); itA++) {
+        for (auto itA = Ord.begin(); itA != Ord.end(); itA++) {
             switch (SETB.Mytype) {
             case INT:
                 for (auto itB = SETB.Int.begin(); itB != SETB.Int.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case CHAR:
                 for (auto itB = SETB.Char.begin(); itB != SETB.Char.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case DOUBLE:
                 for (auto itB = SETB.Double.begin(); itB != SETB.Double.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case STRING:
                 for (auto itB = SETB.Str.begin(); itB != SETB.Str.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             case ORD:
                 for (auto itB = SETB.Ord.begin(); itB != SETB.Ord.end();
                      itB++) {
                     ord Tord(*itA, *itB);
-                    push(Tord);
+                    temp.push(Tord);
                 }
                 break;
             }
         }
         break;
     }
-    cout << *this << endl;
+    cout << temp << endl;
     return;
 }
 istream &operator>>(istream &Cin, SET &S) {
@@ -574,9 +978,10 @@ istream &operator>>(istream &Cin, SET &S) {
     case INT:
         int i;
         S.Mytype = INT;
-        while (Cin >> i)
+        while (Cin >> i) {
+            // cout << "in" << endl;
             S.Int.insert(i);
-
+        }
         break;
     case DOUBLE:
         double dou;
@@ -599,6 +1004,183 @@ istream &operator>>(istream &Cin, SET &S) {
             S.Str.insert(str);
         break;
     }
+    case ORD: {
+        S.Mytype = ORD;
+        Cin >> temp;
+        types Ty1 = types(temp);
+        Cin >> temp;
+        types Ty2 = types(temp);
+        switch (Ty1) {
+        case INT: {
+            switch (Ty2) {
+            case INT: {
+                int t1, t2;
+                while (Cin >> t1) {
+                    Cin >> t2;
+                    ord T(t1, t2);
+                    S.push(T);
+                }
+            } break;
+            case CHAR: {
+                int t1;
+                char t2;
+                char t;
+                while (Cin >> t) {
+                    // cout << "in" << endl;
+                    // if (t == '<') {
+                    Cin >> t1;
+                    Cin >> t;
+                    Cin >> t2;
+                    ord T(t1, t2);
+                    S.push(T);
+                    // }
+                }
+            } break;
+            case DOUBLE: {
+                int t1;
+                double t2;
+                while (Cin >> t1 >> t2) {
+                    ord T(t1, t2);
+                    S.push(T);
+                }
+
+            } break;
+            case STRING: {
+                int t1;
+                string t2;
+                char t;
+                while (Cin >> t1) {
+                    getchar();
+                    while (Cin >> t && t != '>') {
+                        t2 += t;
+                    }
+                    ord T(t1, t2);
+                    S.push(T);
+                }
+
+            } break;
+            }
+        } break;
+        case CHAR: {
+            switch (Ty2) {
+            case INT: {
+                char t1;
+                int t2;
+                char t;
+                while (Cin >> t) {
+                    if (t == '<') {
+                        Cin >> t1;
+                        Cin >> t2;
+                        ord T(t1, t2);
+                        S.push(T);
+                    }
+                }
+            } break;
+
+            case CHAR: {
+                char t1, t2, t;
+                while (Cin >> t) {
+                    if (t == '<') {
+                        Cin >> t1;
+                        getchar();
+                        Cin >> t2;
+                        ord T(t1, t2);
+                        S.push(T);
+                    }
+                }
+
+            } break;
+
+            case DOUBLE: {
+                char t1, t;
+                double t2;
+                while (Cin >> t) {
+                    if (t == '<') {
+                        Cin >> t1;
+                        Cin >> t2;
+                        ord T(t1, t2);
+                        S.push(T);
+                    }
+                }
+            } break;
+
+            case STRING: {
+                char t1, t;
+                string t2;
+                while (Cin >> t) {
+                    if (t == '<') {
+                        Cin >> t1;
+                        getchar();
+                        while (Cin >> t && t != '>') {
+                            t2 += t;
+                        }
+                        ord T(t1, t2);
+                        S.push(T);
+                    }
+                }
+            } break;
+            }
+
+        } break;
+        case DOUBLE: {
+            switch (Ty2) {
+            case INT: {
+                double t1;
+                int t2;
+                while (Cin >> t1 >> t2) {
+                    ord T(t1, t2);
+                    S.push(T);
+                }
+            } break;
+            case CHAR: {
+                double t1;
+                char t2, t;
+                while (Cin >> t1) {
+                    getchar();
+                    Cin >> t2;
+                    ord T(t1, t2);
+                    S.push(T);
+                }
+            } break;
+            case DOUBLE: {
+                double t1, t2;
+                while (Cin >> t1 >> t2) {
+                    ord T(t1, t2);
+                    S.push(T);
+                }
+
+            } break;
+            case STRING: {
+                double t1;
+                char t;
+                string t2;
+                while (Cin >> t1) {
+                    getchar();
+                    while (Cin >> t && t != '>') {
+                        t2 += t;
+                    }
+                    ord T(t1, t2);
+                    S.push(T);
+                }
+
+            } break;
+            }
+        } break;
+        case STRING: {
+            switch (Ty2) {
+            case INT: {
+            } break;
+            case CHAR: {
+            } break;
+            case DOUBLE: {
+            } break;
+            case STRING: {
+            } break;
+            }
+        } break;
+        }
+
+    } break;
     }
     return Cin;
 }
