@@ -1,3 +1,10 @@
+# 5月30日早晨更新 
+新增 集合关系矩阵
+```.cpp
+    void Relation_matrix_print();                  //关系矩阵
+    
+    SETpair1.Relation_matrix_print();              //关系矩阵图
+```
 # 5月29日下午更新
 新增：
 
