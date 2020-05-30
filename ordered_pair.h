@@ -6,13 +6,13 @@ using namespace std;
 enum types { INT, CHAR, STRING, DOUBLE, ORD, NUll };
 class ord {
   private:
+  public:
+    types type1, type2;
     int *I[2] = {nullptr, nullptr};
     char *CH[2] = {nullptr, nullptr};
     string *STR[2] = {nullptr, nullptr};
     double *DOU[2] = {nullptr, nullptr};
-    types type1, type2;
 
-  public:
     ord() {
         type1 = NUll;
         type2 = NUll;

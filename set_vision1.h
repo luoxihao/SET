@@ -3,6 +3,7 @@
 #include <iostream>
 #include <set>
 #include <sstream>
+#include <vector>
 using namespace std;
 
 class SET;
@@ -95,7 +96,39 @@ class SET {
     void Empty_Relationship_Print();               //空关系
     void Less_or_equal_relationship_print();       //少于或等于
     void Divisive_relationship_print();            //整除
+    void Relation_matrix_print();                  //关系矩阵
 };
+void SET::Relation_matrix_print() { //关系矩阵
+    auto it = Ord.begin();
+    if (Mytype != ORD || it->type1 != INT || it->type2 != INT) {
+        cout << "error" << endl;
+        return;
+    }
+    {
+        int MAX = *it->I[0];
+        for (auto it = Ord.begin(); it != Ord.end(); it++) {
+            if (MAX < *it->I[0])
+                MAX = *it->I[0];
+            if (MAX < *it->I[1])
+                MAX = *it->I[1];
+        }
+        vector<vector<int>> map(MAX, vector<int>(MAX));
+        for (int i = 0; i < map.size(); i++)
+            for (int j = 0; j < map[0].size(); j++)
+                map[i][j] = 0;
+        for (auto it = Ord.begin(); it != Ord.end(); it++) {
+            map[*it->I[0] - 1][*it->I[1] - 1] = 1;
+        }
+        for (int i = 0; i < map.size(); i++) {
+            cout << "| ";
+            for (int j = 0; j < map[0].size(); j++) {
+                cout << map[i][j] << " ";
+            }
+            cout << "|" << endl;
+        }
+    }
+}
+
 void SET::Divisive_relationship_print() { //整除
     SET temp;
     switch (Mytype) {
@@ -1200,6 +1233,7 @@ SET SET::operator+(const SET &S) { //重载+ 并集
     temp.Char.insert(Char.begin(), Char.end());
     temp.Double.insert(Double.begin(), Double.end());
     temp.Str.insert(Str.begin(), Str.end());
+    temp.Ord.insert(Ord.begin(), Ord.end());
     return temp;
 }
 SET SET::operator&(const SET &S) { // 重载&交集

@@ -23,7 +23,6 @@ int main() {
         input3 >> SETpair1;
     else
         cout << "data_pair1 is not open" << endl;
-    // cout << SETpair1 << endl;
     // cout << "SET1: " << SET1 << endl;
     // cout << "SET2: " << SET2 << endl;
     // SET SET3 = SET1 + SET2;
@@ -46,7 +45,11 @@ int main() {
     // cout << "SET1的小于或等于的关系为;" << endl;
     // SET1.Less_or_equal_relationship_print(); //少于或等于
 
-    cout << "SET1的整除关系为:" << endl;
-    SET1.Divisive_relationship_print();
+    // cout << "SET1的整除关系为:" << endl;
+    // SET1.Divisive_relationship_print(); //整除关系
+
+    // cout << SETpair1 << endl;
+    SETpair1.Relation_matrix_print(); //关系矩阵图
+
     return 0;
 }
