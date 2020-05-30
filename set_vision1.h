@@ -1,4 +1,5 @@
-
+#ifndef SET_VISION
+#define SET_VESION
 #include "ordered_pair.h"
 #include <iostream>
 #include <set>
@@ -97,7 +98,87 @@ class SET {
     void Less_or_equal_relationship_print();       //少于或等于
     void Divisive_relationship_print();            //整除
     void Relation_matrix_print();                  //关系矩阵
+    void Domain_print();                           //定义域输出
+    void Range_print();                            //值域输出
+    void Area_print();                             //域输出
+    void Inverse_print();                          //序偶集合的逆输出
+    void Right_match_print(const SET &S);          //右复合
+    void Limit_print(const SET &S);                //限制
+    void image_print(const SET &S);                //像
 };
+void SET::image_print(const SET &S) { //像
+    SET temp;
+    for (auto it = Ord.begin(); it != Ord.end(); it++) {
+        for (auto it1 = S.Int.begin(); it1 != S.Int.end(); it1++) {
+            if (*it1 == *it->I[0]) {
+                temp.push(*it->I[1]);
+            }
+        }
+    }
+    cout << temp << endl;
+}
+
+void SET::Limit_print(const SET &S) { //限制
+    SET temp;
+    for (auto it = Ord.begin(); it != Ord.end(); it++) {
+        for (auto it1 = S.Int.begin(); it1 != S.Int.end(); it1++) {
+            if (*it1 == *it->I[0]) {
+                ord Tord(*it->I[0], *it->I[1]);
+                temp.push(Tord);
+            }
+        }
+    }
+    cout << temp << endl;
+}
+
+void SET::Right_match_print(
+    const SET &S) { //本身对()中的复合 SET1...(SET2) SET1对SET2的复合
+    SET temp;
+    for (auto it1 = S.Ord.begin(); it1 != S.Ord.end(); it1++) {
+        for (auto it2 = Ord.begin(); it2 != Ord.end(); it2++) {
+            if (*it1->I[1] == *it2->I[0]) {
+                ord Tord(*it1->I[0], *it2->I[1]);
+                temp.push(Tord);
+            }
+        }
+    }
+    cout << temp << endl;
+}
+
+void SET::Inverse_print() { //序偶逆输出
+    SET temp;
+    for (auto it = Ord.begin(); it != Ord.end(); it++) {
+        ord temp_ord(*it->I[1], *it->I[0]);
+        temp.push(temp_ord);
+    }
+    cout << temp << endl;
+}
+
+void SET::Area_print() { //域输出
+    SET temp;
+    for (auto it = Ord.begin(); it != Ord.end(); it++) {
+        temp.push(*it->I[0]);
+        temp.push(*it->I[1]);
+    }
+    cout << temp << endl;
+}
+
+void SET::Range_print() { //值域输出
+    SET temp;
+    for (auto it = Ord.begin(); it != Ord.end(); it++) {
+        temp.push(*it->I[1]);
+    }
+    cout << temp << endl;
+}
+
+void SET::Domain_print() { //输出
+    SET temp;
+    for (auto it = Ord.begin(); it != Ord.end(); it++) {
+        temp.push(*it->I[0]);
+    }
+    cout << temp << endl;
+}
+
 void SET::Relation_matrix_print() { //关系矩阵
     auto it = Ord.begin();
     if (Mytype != ORD || it->type1 != INT || it->type2 != INT) {
@@ -844,13 +925,6 @@ void SET::Cartesian_Product_print(const SET &SETB) { // AXB
                     temp.push(Tord);
                 }
                 break;
-            case CHAR:
-                for (auto itB = SETB.Char.begin(); itB != SETB.Char.end();
-                     itB++) {
-                    ord Tord(*itA, *itB);
-                    temp.push(Tord);
-                }
-                break;
             case DOUBLE:
                 for (auto itB = SETB.Double.begin(); itB != SETB.Double.end();
                      itB++) {
@@ -1285,3 +1359,4 @@ ostream &operator<<(ostream &Cout, const SET &S) {
     Cout << "}";
     return Cout;
 }
+#endif

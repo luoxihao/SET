@@ -1,3 +1,5 @@
+#ifndef ORDERED_PAIR
+#define ORDERED_PAIR
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -61,6 +63,7 @@ class ord {
     // };
     bool operator<(const ord &o) const;
 };
+
 bool ord::operator<(const ord &o) const { //新的入set的重载
 
     return I[0] < o.I[0]
@@ -71,13 +74,15 @@ bool ord::operator<(const ord &o) const { //新的入set的重载
                              ? true
                              : (STR[0] < o.STR[0]
                                     ? true
-                                    : I[01] < o.I[1]
+                                    : I[1] < o.I[1]
                                           ? true
                                           : DOU[1] < o.DOU[1]
                                                 ? true
                                                 : CH[1] < o.CH[1]
                                                       ? true
                                                       : STR[1] < STR[1])));
+
+    // return I[0] < o.I[0] ? true : I[1] < o.I[1];
 }
 ostream &operator<<(ostream &os, const ord &op) {
     os << "<";
@@ -202,3 +207,4 @@ size_t ord::OPHash() const { //旧入set的<重载
     }
     return s;
 }
+#endif
