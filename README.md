@@ -1,3 +1,23 @@
+# 5月30日晚间更新
+新增 定义域输出 值域输出 域输出 序偶集合的逆输出 右符合 限制 像
+```.cpp
+    void Domain_print();                           //定义域输出
+    void Range_print();                            //值域输出
+    void Area_print();                             //域输出
+    void Inverse_print();                          //序偶集合的逆输出
+    void Right_match_print(const SET &S);          //右复合
+    void Limit_print(const SET &S);                //限制
+    void image_print(const SET &S);                //像
+    
+    SETpair1.Domain_print();                       //定义域
+    SETpair1.Range_print();                        //值域
+    SETpair1.Area_print();                         //域
+    SETpair1.Inverse_print();                      //逆
+    SETpair1.Right_match_print(SETpair2);          // SETpair1对SETpair2的右复合
+    SETpair1.Limit_print(SET1);                    //SET1 对SETpair1的限制
+    SETpair1.image_print(SET1);                    //SET1对SETpair1的像
+```
+
 # 5月30日早晨更新 
 新增 集合关系矩阵
 ```.cpp
@@ -18,7 +38,7 @@
     void Divisive_relationship_print();            //整除
     
     SET1.Less_or_equal_relationship_print();       //少于或等于   
-    SET1.Divisive_relationship_print();
+    SET1.Divisive_relationship_print();            //整除
 ```
 
 # 5月29日凌晨更新
@@ -30,9 +50,9 @@
     void Empty_Relationship_Print();               //空关系
     
 
-    SET1.Global_relationship_Print();//全域
-    SET1.Identity_relationship_Print(); //恒等
-    SET1.Empty_Relationship_Print();//空
+    SET1.Global_relationship_Print();              //全域
+    SET1.Identity_relationship_Print();            //恒等
+    SET1.Empty_Relationship_Print();               //空
 ```
 # 5月28日更新
 
